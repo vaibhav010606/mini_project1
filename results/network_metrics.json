@@ -1,0 +1,93 @@
+{
+  "rule": {
+    "accuracy": 0.969807391983342,
+    "macro_f1": 0.938136161320558,
+    "thresholds": {
+      "density": 1.5,
+      "frac_fast": 0.25
+    },
+    "stampede_delay_median_s": 3.0,
+    "stampede_episodes_missed": 0,
+    "stampede_episodes_total": 35
+  },
+  "xgboost": {
+    "accuracy": 0.9816068020128406,
+    "macro_f1": 0.966327261747161,
+    "report": {
+      "normal": {
+        "precision": 0.9878406708595387,
+        "recall": 0.9899159663865547,
+        "f1-score": 0.9888772298006296,
+        "support": 4760.0
+      },
+      "dense": {
+        "precision": 0.9244663382594417,
+        "recall": 0.913961038961039,
+        "f1-score": 0.9191836734693878,
+        "support": 616.0
+      },
+      "stampede": {
+        "precision": 0.9947916666666666,
+        "recall": 0.9870801033591732,
+        "f1-score": 0.9909208819714657,
+        "support": 387.0
+      },
+      "accuracy": 0.9816068020128406,
+      "macro avg": {
+        "precision": 0.969032891928549,
+        "recall": 0.9636523695689222,
+        "f1-score": 0.966327261747161,
+        "support": 5763.0
+      },
+      "weighted avg": {
+        "precision": 0.9815334431128268,
+        "recall": 0.9816068020128406,
+        "f1-score": 0.9815650074667875,
+        "support": 5763.0
+      }
+    },
+    "stampede_delay_median_s": 0.0,
+    "stampede_episodes_missed": 0,
+    "stampede_episodes_total": 35
+  },
+  "lstm": {
+    "accuracy": 0.9791775117126497,
+    "macro_f1": 0.9597628257123642,
+    "report": {
+      "normal": {
+        "precision": 0.9809326424870466,
+        "recall": 0.994327731092437,
+        "f1-score": 0.987584767866458,
+        "support": 4760.0
+      },
+      "dense": {
+        "precision": 0.9616087751371115,
+        "recall": 0.8538961038961039,
+        "f1-score": 0.9045571797076526,
+        "support": 616.0
+      },
+      "stampede": {
+        "precision": 0.9820971867007673,
+        "recall": 0.9922480620155039,
+        "f1-score": 0.987146529562982,
+        "support": 387.0
+      },
+      "accuracy": 0.9791775117126497,
+      "macro avg": {
+        "precision": 0.9748795347749751,
+        "recall": 0.946823965668015,
+        "f1-score": 0.9597628257123642,
+        "support": 5763.0
+      },
+      "weighted avg": {
+        "precision": 0.9789453400964775,
+        "recall": 0.9791775117126497,
+        "f1-score": 0.978680622017201,
+        "support": 5763.0
+      }
+    },
+    "stampede_delay_median_s": 0.0,
+    "stampede_episodes_missed": 0,
+    "stampede_episodes_total": 35
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "video": "samples/ucsd_test007.mp4",
+  "mode": "ae",
+  "frames": 180,
+  "fps": 10.0,
+  "alert_intervals_s": [
+    [
+      9.8,
+      11.0
+    ],
+    [
+      13.2,
+      15.1
+    ],
+    [
+      15.2,
+      18.0
+    ]
+  ],
+  "alert_fraction": 0.3277777777777778
+}

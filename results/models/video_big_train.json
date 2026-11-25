@@ -1,0 +1,8 @@
+{
+  "model": "big",
+  "params": 3485061,
+  "epochs": 60,
+  "final_loss": 0.0002269069609156947,
+  "train_seconds": 308.52231645584106,
+  "distill": false
+}

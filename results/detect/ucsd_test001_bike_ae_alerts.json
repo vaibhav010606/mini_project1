@@ -1,0 +1,13 @@
+{
+  "video": "samples/ucsd_test001_bike.mp4",
+  "mode": "ae",
+  "frames": 180,
+  "fps": 10.0,
+  "alert_intervals_s": [
+    [
+      10.6,
+      18.0
+    ]
+  ],
+  "alert_fraction": 0.4111111111111111
+}

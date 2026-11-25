@@ -1,0 +1,8 @@
+{
+  "video": "samples/ucsd_train001_normal.mp4",
+  "mode": "ae",
+  "frames": 120,
+  "fps": 10.0,
+  "alert_intervals_s": [],
+  "alert_fraction": 0.0
+}

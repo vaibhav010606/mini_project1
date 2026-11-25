@@ -1,0 +1,8 @@
+{
+  "model": "student",
+  "params": 220005,
+  "epochs": 60,
+  "final_loss": 0.00035684210264587765,
+  "train_seconds": 174.25101161003113,
+  "distill": true
+}

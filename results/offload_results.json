@@ -1,0 +1,19 @@
+{
+  "Always edge": {
+    "mean_p95_ms": 387.78026666024357,
+    "miss_rate": 0.4066666666666667
+  },
+  "Always cloud": {
+    "mean_p95_ms": 118.89340924024485,
+    "miss_rate": 0.32666666666666666
+  },
+  "ML decides": {
+    "mean_p95_ms": 93.05324071969115,
+    "miss_rate": 0.19333333333333333
+  },
+  "Oracle (best possible)": {
+    "mean_p95_ms": 79.01759042441546,
+    "miss_rate": 0.16
+  },
+  "ml_accuracy": 0.94
+}

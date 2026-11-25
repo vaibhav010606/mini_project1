@@ -1,0 +1,13 @@
+{
+  "video": "samples/synthetic_stampede_cctv.mp4",
+  "mode": "motion",
+  "frames": 650,
+  "fps": 25.0,
+  "alert_intervals_s": [
+    [
+      10.44,
+      15.68
+    ]
+  ],
+  "alert_fraction": 0.20153846153846153
+}

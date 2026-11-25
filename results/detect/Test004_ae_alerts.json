@@ -1,0 +1,13 @@
+{
+  "video": "data/UCSD_Anomaly_Dataset.v1p2/UCSDped2/Test/Test004",
+  "mode": "ae",
+  "frames": 180,
+  "fps": 10.0,
+  "alert_intervals_s": [
+    [
+      3.2,
+      18.0
+    ]
+  ],
+  "alert_fraction": 0.8222222222222222
+}

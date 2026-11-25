@@ -1,0 +1,13 @@
+{
+  "video": "samples/ucsd_test004_cart.mp4",
+  "mode": "ae",
+  "frames": 180,
+  "fps": 10.0,
+  "alert_intervals_s": [
+    [
+      3.2,
+      18.0
+    ]
+  ],
+  "alert_fraction": 0.8222222222222222
+}

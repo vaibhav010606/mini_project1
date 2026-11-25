@@ -1,0 +1,37 @@
+{
+  "Video only (Model 1)": {
+    "auc": 0.8608235508725961,
+    "tpr_at_5pct_fpr": 0.7088712144386663,
+    "caught_when_camera_blind": 0.05829596412556054
+  },
+  "Network only (Model 2)": {
+    "auc": 0.9007886947022353,
+    "tpr_at_5pct_fpr": 0.8072805139186295,
+    "caught_when_camera_blind": 0.7802690582959642
+  },
+  "Fusion: max": {
+    "auc": 0.9652345199425386,
+    "tpr_at_5pct_fpr": 0.9186295503211992,
+    "caught_when_camera_blind": 0.757847533632287
+  },
+  "Fusion: average": {
+    "auc": 0.9661279489895546,
+    "tpr_at_5pct_fpr": 0.9207708779443254,
+    "caught_when_camera_blind": 0.7623318385650224
+  },
+  "Fusion: learned (LogReg)": {
+    "auc": 0.9661554151957562,
+    "tpr_at_5pct_fpr": 0.917558886509636,
+    "caught_when_camera_blind": 0.7533632286995515
+  },
+  "setup": {
+    "N": 6000,
+    "p_incident": 0.3,
+    "p_cam_sees": 0.75,
+    "p_net_sees": 0.8,
+    "logreg_weights": {
+      "video": 9.270756721496582,
+      "network": 5.903776168823242
+    }
+  }
+}

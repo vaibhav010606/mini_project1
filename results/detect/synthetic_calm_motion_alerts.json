@@ -1,0 +1,8 @@
+{
+  "video": "samples/synthetic_calm.mp4",
+  "mode": "motion",
+  "frames": 500,
+  "fps": 25.0,
+  "alert_intervals_s": [],
+  "alert_fraction": 0.0
+}

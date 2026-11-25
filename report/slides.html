@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><title>Slides</title><style>
+@page { size: 297mm 167mm; margin: 0; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; color: #1f2328; }
+.s { width: 297mm; height: 167mm; box-sizing: border-box; padding: 12mm 16mm; page-break-after: always; position: relative; overflow: hidden; }
+.s h1 { font-size: 26pt; margin: 0 0 6mm; color: #0b3d91; } .s h2 { font-size: 20pt; margin: 0 0 5mm; color: #0b3d91; border-bottom: 2px solid #2f6feb; padding-bottom: 2mm; }
+.s li { font-size: 13pt; margin: 2mm 0; } .s p { font-size: 13pt; }
+.cols { display: flex; gap: 8mm; align-items: flex-start; } .cols > div { flex: 1; }
+img { max-width: 100%; max-height: 105mm; } pre { font-size: 7.6pt; background: #f6f8fa; padding: 3mm; border-radius: 3mm; }
+.big { font-size: 30pt; font-weight: 700; color: #2f6feb; } .lbl { font-size: 10pt; color: #57606a; }
+.kpis { display: flex; gap: 6mm; margin-top: 8mm; } .kpis > div { flex: 1; border: 1px solid #d0d7de; border-radius: 3mm; padding: 4mm; text-align: center; }
+.title { background: linear-gradient(135deg, #0b3d91, #2f6feb); color: white; display: flex; flex-direction: column; justify-content: center; }
+.title h1 { color: white; font-size: 28pt; } .title p { font-size: 14pt; opacity: 0.9; }
+.foot { position: absolute; bottom: 5mm; right: 10mm; font-size: 9pt; color: #8c959f; }
+table { border-collapse: collapse; } td, th { border: 1px solid #d0d7de; padding: 1.5mm 3mm; font-size: 11pt; } th { background: #f6f8fa; }
+.center { text-align: center; } .take { font-size: 14pt; text-align: center; margin-top: 3mm; }
+.arch { display: flex; gap: 6mm; align-items: stretch; } .flow { flex: 3; display: flex; flex-direction: column; gap: 1.5mm; }
+.row { display: flex; gap: 4mm; } .row > div { flex: 1; }
+.node { border: 2px solid #2f6feb; border-radius: 3mm; padding: 2.5mm 4mm; font-size: 13pt; background: #eef4ff; text-align: center; }
+.arrow { text-align: center; font-size: 15pt; color: #57606a; line-height: 1.1; }
+.band { border: 2px dashed #8250df; background: #f6f0ff; border-radius: 3mm; padding: 2mm 3mm; }
+.band .hd, .edge .hd { font-size: 12pt; font-weight: 700; margin-bottom: 2mm; text-align: center; }
+.urllc { border-color: #cf222e; background: #fff0f0; } .embb { border-color: #8c959f; background: #f6f8fa; }
+.edge { border: 2.5px solid #1a7f37; background: #effaf1; border-radius: 3mm; padding: 2.5mm 3mm; }
+.edge .node { background: white; border-color: #1a7f37; font-size: 12pt; }
+.alert { border-color: #cf222e; background: #fff0f0; font-weight: 700; }
+.cloudcol { flex: 1.1; display: flex; flex-direction: column; justify-content: flex-end; }
+.cloud { border: 2.5px solid #8250df; background: #f6f0ff; border-radius: 3mm; padding: 4mm; font-size: 12.5pt; text-align: center; }
+.kpis.top { margin: 0 0 3mm; } .kpis.top > div { padding: 2mm; } .kpis.top .big { font-size: 24pt; }
+</style></head><body><div class="s title"><h1>Multimodal Crowd Anomaly &amp; Stampede-Risk Detection<br>using Video AI and 5G Network Data with Edge Computing</h1>
+<p>AI/ML project · November 2026</p></div><div class="s"><h2>Problem</h2><ul>
+<li>Crowd crushes and stampedes develop in <b>seconds</b></li>
+<li>Operators cannot watch every CCTV screen; late alerts are useless</li>
+<li>Goal: detect anomalies <b>accurately</b> and deliver alerts <b>fast</b></li>
+<li>Problem statement: train an anomaly detector on public crowd video and compare <b>edge vs cloud</b> processing over <b>5G (MEC)</b></li>
+</ul></div><div class="s"><h2>Our approach: two detectors + 5G edge</h2><div class="arch"><div class="flow">
+<div class="row"><div class="node">📷 CCTV cameras<br><small>video</small></div><div class="node">📱 People's phones<br><small>5G network data</small></div></div>
+<div class="arrow">▼</div>
+<div class="band"><div class="hd">📡 5G network with slicing</div>
+<div class="row"><div class="node urllc">🚨 URLLC slice: safety cameras + alerts</div><div class="node embb">👥 eMBB: public phone traffic</div></div></div>
+<div class="arrow">▼</div>
+<div class="edge"><div class="hd">⚡ MEC edge server (next to the 5G tower)</div>
+<div class="row"><div class="node">🧠 Model 1<br>video anomaly</div><div class="node">🧠 Model 2<br>network crowd risk</div>
+<div class="node">🧠 Combined model<br>(video + 5G)</div><div class="node alert">🚨 Alert to<br>security staff</div></div>
+<div class="arrow" style="font-size:11.5pt;margin-top:2mm">🧠 ML decides: process here at the edge, or send to the cloud ▶</div></div>
+</div>
+<div class="cloudcol"><div class="cloud">☁️ <b>Cloud</b><br><br>v2 most accurate model (GPU)<br><br>storage, retraining<br><br><small>20-100 ms away</small></div></div>
+</div></div><div class="s"><h2>Where AI/ML is used</h2><table>
+<tr><th>#</th><th>AI/ML part</th><th>Technique</th></tr>
+<tr><td>1</td><td>Video anomaly detection</td><td>Future-frame prediction U-Net (v1: autoencoder)</td></tr>
+<tr><td>2</td><td>Edge-ready model</td><td>Knowledge distillation (16× fewer parameters)</td></tr>
+<tr><td>3</td><td>Crowd risk from 5G data</td><td>XGBoost / LSTM on network time series</td></tr>
+<tr><td>4</td><td>Detect from both at once</td><td>Combined model: video CNN + 5G branch, trained together on the same events</td></tr>
+<tr><td>5</td><td>Edge or cloud?</td><td>XGBoost offloading decision</td></tr></table>
+<p>5G roles: <b>sensor</b> (network data) · <b>transport</b> (URLLC slice) · <b>compute</b> (MEC edge)</p></div><div class="s"><h2>Model 1: video anomaly detection (UCSD Ped2)</h2><div class="cols">
+<div><ul><li>Trained only on <b>normal</b> video</li><li>v2 predicts the next frame: what it cannot predict = anomaly</li><li>Worst-patch scoring for small objects</li></ul>
+<div class="kpis"><div><div class="big">0.836</div><div class="lbl">v1 autoencoder</div></div><div><div class="big">0.974</div><div class="lbl">v2 prediction (final)</div></div><div><div class="big">0.777</div><div class="lbl">edge model</div></div></div></div>
+<div><img src="../results/figures/video_examples.png"></div></div></div><div class="s"><h2>Accuracy vs speed: cloud model (v2) vs edge model</h2><div class="center"><img src="../results/figures/video_benchmark.png" style="max-height:105mm"></div>
+<p class="take">v2 is the most accurate but takes 105.9 ms per frame on a CPU, so it runs in the <b>cloud</b> (GPU: 4.1 ms); the small student model runs at the <b>edge</b>.</p></div><div class="s"><h2>Model 2: crowd risk from 5G network data</h2><div class="cols">
+<div><ul><li>Simulated venue with 9 small cells, 800-2,600 people with phones</li><li>Phones per cell, handovers, density and speed from 5G positioning</li><li>Normal / dense / stampede</li></ul>
+<div class="kpis"><div><div class="big">98.2%</div><div class="lbl">XGBoost accuracy</div></div><div><div class="big">0.966</div><div class="lbl">macro-F1</div></div></div></div>
+<div><img src="../results/figures/net_timeline.png"></div></div></div><div class="s"><h2>Where is the danger? Density heatmap from 5G</h2><img src="../results/figures/net_heatmaps.png" style="max-height:125mm"></div><div class="s"><h2>Combined model: same event, video + 5G</h2>
+<div class="kpis top"><div><div class="big">0.823</div><div class="lbl">video only (macro-F1)</div></div><div><div class="big">0.924</div><div class="lbl">5G only</div></div><div><div class="big">0.950</div><div class="lbl">combined</div></div></div>
+<div class="center"><img src="../results/figures/joint_by_condition.png" style="max-height:78mm"></div>
+<p class="take">Camera can't see the danger → 5G covers it · few phones visible → video covers it · combined catches 97.1% of danger with 3.6% false alarms.</p></div><div class="s"><h2>How the joint data is made</h2><div class="cols">
+<div><ul><li>One simulated crowd event drives <b>both</b> sensors</li><li>📷 CCTV camera films an 80 m × 80 m part of the venue</li>
+<li>📡 5G network senses the same people's phones everywhere</li><li>Hard cases: <b>night</b>, danger <b>outside the camera view</b>, <b>few phones</b> visible</li>
+<li>300 events · video CNN + 5G branch trained together</li></ul></div>
+<div><img src="../results/figures/joint_video_preview.png"></div></div></div><div class="s"><h2>Edge vs cloud over 5G</h2><img src="../results/figures/edge_vs_cloud_cameras.png" style="max-height:105mm">
+<p>10 cameras: edge <b>7.2 ms</b> vs cloud <b>58.7 ms</b></p></div><div class="s"><h2>5G network slicing protects safety traffic</h2><div class="center"><img src="../results/figures/slicing_effect.png" style="max-height:100mm"></div>
+<p class="take">20 cameras, 90% of the uplink used by the public: 95th-percentile delay <b>9.8 ms</b> with a URLLC slice vs <b>90.4 ms</b> without.</p></div><div class="s"><h2>ML decides: edge or cloud?</h2><div class="center"><img src="../results/figures/offload_policies.png" style="max-height:100mm"></div>
+<p class="take">ML picks the right place in <b>94.0%</b> of unseen situations, close to the best possible delay.</p></div><div class="s"><h2>Limitations and future work</h2><ul>
+<li>5G network data is simulated; validate on real aggregated operator data (e.g. Telecom Italia Milan)</li>
+<li>Edge/cloud study in Python; port the scenario to <b>Simu5G</b> (OMNeT++)</li>
+<li>Autoencoder learns "normal" per camera view</li>
+<li>Next: stronger video models, more datasets, RL-based offloading and slice control</li>
+</ul></div><div class="s title"><h1>Conclusion</h1><p>Two independent AI detectors (video + 5G network), fused for reliability,<br>
+running at the 5G edge with a protected URLLC slice and ML-based offloading,<br>deliver accurate crowd-safety alerts in real time.</p><p>Thank you</p></div></body></html>

@@ -1,0 +1,8 @@
+{
+  "video": "data/UCSD_Anomaly_Dataset.v1p2/UCSDped2/Train/Train001",
+  "mode": "ae",
+  "frames": 120,
+  "fps": 10.0,
+  "alert_intervals_s": [],
+  "alert_fraction": 0.016666666666666666
+}

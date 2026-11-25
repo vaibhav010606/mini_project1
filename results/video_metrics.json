@@ -1,0 +1,33 @@
+{
+  "big": {
+    "auc": {
+      "global_mse": 0.7098508823687175,
+      "patch_max": 0.8364013973073003,
+      "patch_max_norm_smooth": 0.83628741350641
+    },
+    "threshold": 0.42760175466537476,
+    "tpr_at_threshold": 0.5588592233009708,
+    "fpr_at_threshold": 0.07458563535911603
+  },
+  "student": {
+    "auc": {
+      "global_mse": 0.6780829265676125,
+      "patch_max": 0.7929048436410449,
+      "patch_max_norm_smooth": 0.7765649305369307
+    },
+    "threshold": 0.3412679433822632,
+    "tpr_at_threshold": 0.7111650485436893,
+    "fpr_at_threshold": 0.2983425414364641
+  },
+  "pred": {
+    "auc": {
+      "global_psnr_raw": 0.8827031258381162,
+      "global_psnr_norm_smooth": 0.9441948720699458,
+      "patch_max": 0.9374849139087058,
+      "patch_max_norm_smooth": 0.9735071474548087
+    },
+    "threshold": 0.1231054961681366,
+    "tpr_at_threshold": 0.9150485436893204,
+    "fpr_at_threshold": 0.04143646408839779
+  }
+}

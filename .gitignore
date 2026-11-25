@@ -1,0 +1,14 @@
+# Large / regenerable data (UCSD Ped2 download, simulated datasets): see README to recreate
+data/
+
+# Frontend packages and build output (npm install / npm run build)
+frontend/node_modules/
+frontend/dist/
+
+# Temporary outputs of the web app and detect.py runs
+results/web/
+results/detect/*.mp4
+
+# Python cache
+__pycache__/
+*.pyc

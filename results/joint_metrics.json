@@ -1,0 +1,160 @@
+{
+  "conditions": {
+    "All test events": 3060,
+    "Daytime, danger in view, phones normal": 1530,
+    "Night (dark video)": 357,
+    "Danger outside camera view": 765,
+    "Few phones visible": 663
+  },
+  "test_events": {
+    "total": 60,
+    "night": 7,
+    "outside_view": 15,
+    "few_phones": 13
+  },
+  "results": {
+    "Video only": {
+      "All test events": {
+        "n": 3060,
+        "accuracy": 0.8950980392156863,
+        "macro_f1": 0.8234144163470708,
+        "danger_detected": 0.8905723905723906,
+        "false_alarm": 0.10381184103811841,
+        "stampede_detected": 0.954337899543379
+      },
+      "Daytime, danger in view, phones normal": {
+        "n": 1530,
+        "accuracy": 0.9313725490196079,
+        "macro_f1": 0.8890351628357475,
+        "danger_detected": 0.9415204678362573,
+        "false_alarm": 0.07154882154882154,
+        "stampede_detected": 0.9765625
+      },
+      "Night (dark video)": {
+        "n": 357,
+        "accuracy": 0.7815126050420168,
+        "macro_f1": 0.43206347409336204,
+        "danger_detected": 0.8125,
+        "false_alarm": 0.22153846153846155,
+        "stampede_detected": 0.8125
+      },
+      "Danger outside camera view": {
+        "n": 765,
+        "accuracy": 0.7986928104575164,
+        "macro_f1": 0.7268862132790881,
+        "danger_detected": 0.7469879518072289,
+        "false_alarm": 0.18697829716193656,
+        "stampede_detected": 0.9354838709677419
+      },
+      "Few phones visible": {
+        "n": 663,
+        "accuracy": 0.8929110105580694,
+        "macro_f1": 0.8161377846906884,
+        "danger_detected": 0.9622641509433962,
+        "false_alarm": 0.12028725314183124,
+        "stampede_detected": 0.9183673469387755
+      }
+    },
+    "5G only": {
+      "All test events": {
+        "n": 3060,
+        "accuracy": 0.9490196078431372,
+        "macro_f1": 0.9235299714576904,
+        "danger_detected": 0.936026936026936,
+        "false_alarm": 0.04744525547445255,
+        "stampede_detected": 0.9908675799086758
+      },
+      "Daytime, danger in view, phones normal": {
+        "n": 1530,
+        "accuracy": 0.954248366013072,
+        "macro_f1": 0.939486658753676,
+        "danger_detected": 0.9736842105263158,
+        "false_alarm": 0.050505050505050504,
+        "stampede_detected": 0.9921875
+      },
+      "Night (dark video)": {
+        "n": 357,
+        "accuracy": 0.9971988795518207,
+        "macro_f1": 0.6610248508553593,
+        "danger_detected": 1.0,
+        "false_alarm": 0.003076923076923077,
+        "stampede_detected": 1.0
+      },
+      "Danger outside camera view": {
+        "n": 765,
+        "accuracy": 0.9437908496732026,
+        "macro_f1": 0.9289235209235209,
+        "danger_detected": 1.0,
+        "false_alarm": 0.07178631051752922,
+        "stampede_detected": 1.0
+      },
+      "Few phones visible": {
+        "n": 663,
+        "accuracy": 0.9351432880844646,
+        "macro_f1": 0.8399504472832753,
+        "danger_detected": 0.7264150943396226,
+        "false_alarm": 0.025134649910233394,
+        "stampede_detected": 0.9795918367346939
+      }
+    },
+    "Combined (video + 5G)": {
+      "All test events": {
+        "n": 3060,
+        "accuracy": 0.9656862745098039,
+        "macro_f1": 0.9497641112179093,
+        "danger_detected": 0.9713804713804713,
+        "false_alarm": 0.035685320356853206,
+        "stampede_detected": 1.0
+      },
+      "Daytime, danger in view, phones normal": {
+        "n": 1530,
+        "accuracy": 0.9660130718954248,
+        "macro_f1": 0.9541153957808745,
+        "danger_detected": 0.9678362573099415,
+        "false_alarm": 0.034511784511784514,
+        "stampede_detected": 1.0
+      },
+      "Night (dark video)": {
+        "n": 357,
+        "accuracy": 1.0,
+        "macro_f1": 0.6666666666666666,
+        "danger_detected": 1.0,
+        "false_alarm": 0.0,
+        "stampede_detected": 1.0
+      },
+      "Danger outside camera view": {
+        "n": 765,
+        "accuracy": 0.9529411764705882,
+        "macro_f1": 0.9397084048027443,
+        "danger_detected": 0.9879518072289156,
+        "false_alarm": 0.05676126878130217,
+        "stampede_detected": 1.0
+      },
+      "Few phones visible": {
+        "n": 663,
+        "accuracy": 0.9728506787330317,
+        "macro_f1": 0.9461781206171108,
+        "danger_detected": 0.9622641509433962,
+        "false_alarm": 0.025134649910233394,
+        "stampede_detected": 1.0
+      }
+    }
+  },
+  "stampede_delay": {
+    "Video only": {
+      "median_s": 1.0,
+      "missed": 0,
+      "total": 20
+    },
+    "5G only": {
+      "median_s": 2.0,
+      "missed": 0,
+      "total": 20
+    },
+    "Combined (video + 5G)": {
+      "median_s": 1.0,
+      "missed": 0,
+      "total": 20
+    }
+  }
+}

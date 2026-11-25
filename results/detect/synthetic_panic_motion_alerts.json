@@ -1,0 +1,13 @@
+{
+  "video": "samples/synthetic_panic.mp4",
+  "mode": "motion",
+  "frames": 500,
+  "fps": 25.0,
+  "alert_intervals_s": [
+    [
+      8.56,
+      11.72
+    ]
+  ],
+  "alert_fraction": 0.158
+}
