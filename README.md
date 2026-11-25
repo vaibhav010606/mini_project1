@@ -11,8 +11,20 @@ AI/ML project: detect crowd danger from **CCTV video** and **5G network data** o
 
 ## Requirements
 
-Python 3.10+ with: `torch`, `numpy`, `opencv-python`, `scikit-learn`, `xgboost`, `scipy`, `pandas`, `matplotlib`.
+Python 3.10+ (tested with 3.13), Node.js 18+ for the web app, and Git.
 An NVIDIA GPU is optional but makes training ~10× faster. Microsoft Edge or Google Chrome is used to make the PDFs.
+
+```powershell
+git clone https://github.com/vaibhav010606/mini_project1.git
+cd mini_project1
+pip install -r requirements.txt
+```
+
+For GPU training, install the CUDA build of PyTorch from https://pytorch.org/get-started/locally/ **before**
+`pip install -r requirements.txt` (otherwise the CPU build is installed).
+
+All trained models are included in `results/models/`, so the web app works right after installing; the dataset is
+only needed to retrain (see below).
 
 ## Dataset
 
