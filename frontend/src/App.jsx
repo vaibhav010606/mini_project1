@@ -1,19 +1,26 @@
+import { useState } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
+import { currentUser, logout } from "./auth.js";
 import CombinedPage from "./pages/CombinedPage.jsx";
 import CrowdPage from "./pages/CrowdPage.jsx";
-import EdgePage from "./pages/EdgePage.jsx";
-import ResultsPage from "./pages/ResultsPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import CctvPage from "./pages/CctvPage.jsx";
+import MallPage from "./pages/MallPage.jsx";
 import VideoPage from "./pages/VideoPage.jsx";
 
 const PAGES = [
+  { path: "/mall", label: "Smart mall 3D", element: <MallPage /> },
+  { path: "/cctv", label: "CCTV wall", element: <CctvPage /> },
   { path: "/combined", label: "Combined (video + 5G)", element: <CombinedPage /> },
   { path: "/", label: "Video detection", element: <VideoPage /> },
   { path: "/crowd", label: "5G crowd monitor", element: <CrowdPage /> },
-  { path: "/edge", label: "Edge vs cloud", element: <EdgePage /> },
-  { path: "/results", label: "Results", element: <ResultsPage /> },
 ];
 
 export default function App() {
+  const [user, setUser] = useState(currentUser);
+
+  if (!user) return <LoginPage onLogin={setUser} />;
+
   return (
     <>
       <header className="topbar">
@@ -31,6 +38,11 @@ export default function App() {
             </NavLink>
           ))}
         </nav>
+        <div className="user-chip">
+          <span className="user-avatar" aria-hidden="true">{user.username[0].toUpperCase()}</span>
+          <span>{user.username}</span>
+          <button className="logout" onClick={() => { logout(); setUser(null); }}>Log out</button>
+        </div>
       </header>
       <main className="page">
         <Routes>

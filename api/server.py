@@ -4,13 +4,13 @@
 
 Endpoints
     GET  /api/health        server is up
-    GET  /api/results       all saved results (metrics JSON) + figure URLs   -> Results dashboard
     GET  /api/test-videos   UCSD Ped2 videos you can pick, with true anomaly times
     POST /api/detect        upload a video or pick one -> Model 1 alerts      -> Video upload page
     POST /api/crowd         run a 5G crowd scenario -> Model 2 risk + heatmaps -> 5G crowd monitor
-    POST /api/edge          5G edge vs cloud delay + ML decision              -> Edge vs cloud page
     POST /api/combined      one event -> CCTV video + 5G data -> combined model -> Combined monitor
-    /files/...              static files from results/ (figures, annotated videos)
+    /files/...              static files from results/ (annotated videos, CCTV frames)
+
+The Smart mall 3D and CCTV wall pages run entirely in the browser and need no endpoint.
 
 Video detection runs in a separate process (api/detect_worker.py) so this server never loads
 CUDA together with XGBoost (that combination can crash Python on Windows).
@@ -24,7 +24,6 @@ import shutil
 import subprocess
 import sys
 import uuid
-from dataclasses import replace
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Optional
@@ -37,8 +36,7 @@ from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from common import FIG_DIR, MODEL_DIR, PED2_DIR, RESULTS  # noqa: E402
-from edge_cloud.sim_5g_mec import BENCH, DEADLINE_MS, Config, simulate  # noqa: E402
+from common import MODEL_DIR, PED2_DIR, RESULTS  # noqa: E402
 from network_model.simulator import FEATURES, GNB, LABELS, NZ, VENUE, WINDOW, ZONE, run_episode  # noqa: E402
 from network_model.train import summary_features  # noqa: E402
 
@@ -79,29 +77,10 @@ def xgb_model(name: str):
     return clf
 
 
-def load_json(name):
-    p = RESULTS / name
-    return json.loads(p.read_text()) if p.exists() else None
-
-
 # ------------------------------------------------------------------ basic
 @app.get("/api/health")
 def health():
     return {"ok": True}
-
-
-@app.get("/api/results")
-def results():
-    return clean({
-        "video": load_json("video_metrics.json"),
-        "benchmark": load_json("benchmark.json"),
-        "network": load_json("network_metrics.json"),
-        "fusion": load_json("fusion_results.json"),
-        "joint": load_json("joint_metrics.json"),
-        "edge_cloud": load_json("edge_cloud_results.json"),
-        "offload": load_json("offload_results.json"),
-        "figures": {p.stem: f"/files/figures/{p.name}" for p in sorted(FIG_DIR.glob("*.png"))},
-    })
 
 
 @lru_cache(maxsize=1)
@@ -231,40 +210,3 @@ def combined(req: CombinedReq):
     res = json.loads((out / "result.json").read_text())
     res["frames_url"] = f"/files/web/{job}/frames.jpg"
     return res
-
-
-# ------------------------------------------------------------------ page 3: edge vs cloud
-class EdgeReq(BaseModel):
-    n_cams: int = Field(20, ge=1, le=150)
-    fps: float = Field(10.0, ge=1, le=30)
-    bg_load: float = Field(0.5, ge=0, le=0.95)
-    slicing: bool = True
-    edge_other_load: float = Field(0.0, ge=0, le=0.8)
-    cloud_rtt_ms: float = Field(50.0, ge=10, le=150)
-    sweep: bool = True
-
-
-def _ml_choice(cfg: Config) -> str:
-    x = np.array([[cfg.n_cams, cfg.fps, cfg.bg_load, float(cfg.slicing), cfg.edge_other_load, cfg.cloud_rtt_ms]])
-    return "cloud" if int(xgb_model("offload_xgb.json").predict(x)[0]) == 1 else "edge"
-
-
-@app.post("/api/edge")
-def edge(req: EdgeReq):
-    base = Config(n_cams=req.n_cams, fps=req.fps, bg_load=req.bg_load, slicing=req.slicing,
-                  edge_other_load=req.edge_other_load, cloud_rtt_ms=req.cloud_rtt_ms, sim_s=10.0)
-    e = simulate(replace(base, path="edge"))
-    c = simulate(replace(base, path="cloud"))
-    best = "cloud" if c["p95_ms"] < e["p95_ms"] else "edge"
-    ml = _ml_choice(base)
-    out = dict(edge=e, cloud=c, best=best, ml_choice=ml, ml_correct=ml == best, deadline_ms=DEADLINE_MS,
-               processing_ms=dict(edge=BENCH["edge_ms"], cloud=BENCH["cloud_ms"]), frame_kb=BENCH["frame_kb"])
-    if req.sweep:
-        rows = []
-        for n in [1, 5, 10, 20, 30, 40, 60, 80, 100, 120]:
-            b = replace(base, n_cams=n, seed=n)
-            se, sc = simulate(replace(b, path="edge")), simulate(replace(b, path="cloud"))
-            rows.append(dict(n_cams=n, edge_p95=se["p95_ms"], cloud_p95=sc["p95_ms"],
-                             edge_mean=se["mean_ms"], cloud_mean=sc["mean_ms"], ml=_ml_choice(b)))
-        out["sweep"] = rows
-    return clean(out)

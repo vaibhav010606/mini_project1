@@ -1,2 +1,6 @@
 node_modules/
 dist/
+
+# local settings, e.g. the Formspree form ID (never upload to GitHub)
+.env.local
+*.local

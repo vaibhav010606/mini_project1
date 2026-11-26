@@ -83,12 +83,16 @@ python detect.py --video data/UCSD_Anomaly_Dataset.v1p2/UCSDped2/Test/Test004 --
 ## Web app (React frontend + FastAPI backend)
 
 Five pages:
+- **Smart mall 3D**: 3-floor 3D digital twin of the mall (42 shops, atrium, escalators, lifts) with floor views,
+  exploded view, camera presets and shop details.
+- **CCTV wall**: control-room view of 12 simulated live camera feeds (4 per floor); crowds build up and clear at the
+  entrance, food court, escalators and cinema, with BUSY / CROWDED alerts and an alert log.
 - **Combined (video + 5G)**: one event, CCTV video and 5G density map side by side, verdicts of the combined, video-only and
   5G-only models every second, with night and few-phones switches.
 - **Video detection**: upload or pick a video.
 - **5G crowd monitor**: animated density map + Model 2.
-- **Edge vs cloud**: sliders and presets for the 5G simulation + ML decision.
-- **Results**: all final numbers and graphs.
+
+The edge vs cloud and slicing results are in the report and slides (they were removed from the web app).
 
 Needs Node.js 18+ in addition to the Python packages above. Install the frontend packages once:
 
@@ -112,9 +116,13 @@ npm run dev
 Open http://localhost:5173 in a browser. Keep both terminals running while you use the app; closing the backend
 terminal makes the pages show "502 Bad Gateway".
 
+The app opens with a **demo login screen**. The demo account is shown on that screen (and set in
+`frontend/src/auth.js`); the **Use demo** button fills it in. This is for presentations only: there are no real
+accounts, nothing is sent to a server, and the login lasts until the browser tab is closed or you click **Log out**.
+
 | Part | File |
 |---|---|
-| API server (6 endpoints, serves `results/` files) | `api/server.py` |
+| API server (5 endpoints, serves `results/` files) | `api/server.py` |
 | Workers that run PyTorch in a separate process (so CUDA and XGBoost never share one Python process) | `api/detect_worker.py`, `api/combined_worker.py` |
 | Pages | `frontend/src/pages/*.jsx` |
 

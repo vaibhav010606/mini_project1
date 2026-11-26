@@ -24,5 +24,3 @@ export const postJSON = (url, body) =>
 export const postForm = (url, formData) => fetch(url, { method: "POST", body: formData }).then(handle);
 
 export const fmt = (x, d = 3) => (x === null || x === undefined ? "–" : Number(x).toFixed(d));
-export const pct = (x, d = 1) => (x === null || x === undefined ? "–" : `${(x * 100).toFixed(d)}%`);
-export const ms = (x) => (x === null || x === undefined ? "–" : x >= 1000 ? `${(x / 1000).toFixed(1)} s` : `${x.toFixed(1)} ms`);
